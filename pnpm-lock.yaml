@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      core-js:
+        specifier: ^3.46.0
+        version: 3.46.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.4
@@ -14,6 +18,9 @@ importers:
       '@total-typescript/tsconfig':
         specifier: 1.0.4
         version: 1.0.4
+      '@types/core-js':
+        specifier: ^2.5.8
+        version: 2.5.8
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -76,6 +83,12 @@ packages:
   '@total-typescript/tsconfig@1.0.4':
     resolution: {integrity: sha512-fO4ctMPGz1kOFOQ4RCPBRBfMy3gDn+pegUfrGyUFRMv/Rd0ZM3/SHH3hFCYG4u6bPLG8OlmOGcBLDexvyr3A5w==}
 
+  '@types/core-js@2.5.8':
+    resolution: {integrity: sha512-VgnAj6tIAhJhZdJ8/IpxdatM8G4OD3VWGlp6xIxUGENZlpbob9Ty4VVdC1FIEp0aK6DBscDDjyzy5FB60TuNqg==}
+
+  core-js@3.46.0:
+    resolution: {integrity: sha512-vDMm9B0xnqqZ8uSBpZ8sNtRtOdmfShrvT6h2TuQGLs0Is+cR0DYbj/KWP6ALVNbWPpqA/qPLoOuppJN07humpA==}
+
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
@@ -119,5 +132,9 @@ snapshots:
     optional: true
 
   '@total-typescript/tsconfig@1.0.4': {}
+
+  '@types/core-js@2.5.8': {}
+
+  core-js@3.46.0: {}
 
   typescript@5.9.3: {}
