@@ -1,5 +1,4 @@
 import * as assert from "node:assert/strict";
-import * as crypto from "node:crypto";
 import {describe, test} from "node:test";
 
 import {
@@ -11,20 +10,9 @@ import {
     getExpectedChecksum,
 } from "../dist/index.js";
 
+import {assertBytesEqual, assertHashEqual} from "./utils/bps.js";
 import {readDataFile} from "./utils/file.js";
 import {hasROM, readROM} from "./utils/roms.js";
-
-function assertBytesEqual(actual, expected) {
-    assert.strictEqual(actual.length, expected.length);
-
-    for (let i = 0; i < actual.length; i++) {
-        assert.strictEqual(actual[i], expected[i]);
-    }
-}
-
-function assertHashEqual(actual, expectedHash) {
-    assert.strictEqual(crypto.hash("sha256", actual), expectedHash);
-}
 
 function assertPatchChecksum(patchName, expectedName) {
     const patch = readDataFile(patchName);
@@ -42,16 +30,18 @@ function assertPatch(patchName, baseName, expectedName) {
     assertBytesEqual(applyBPS(base, patch), expected);
 }
 
-function assertPatchROM(t, patchName, baseROM, expectedHash) {
-    if (!hasROM(baseROM)) {
-        t.skip(`base ROM "${baseROM}" not available`);
-        return;
-    }
+function testPatchesROM(patchName, baseROM, expectedHash) {
+    return (t) => {
+        if (!hasROM(baseROM)) {
+            t.skip(`base ROM "${baseROM}" not available`);
+            return;
+        }
 
-    const patch = readDataFile(patchName);
-    const base = readROM(baseROM);
+        const patch = readDataFile(patchName);
+        const base = readROM(baseROM);
 
-    assertHashEqual(applyBPS(base, patch), expectedHash);
+        assertHashEqual(applyBPS(base, patch), expectedHash);
+    };
 }
 
 describe("bps", () => {
@@ -89,7 +79,7 @@ describe("bps", () => {
         assertPatch("target_copy.bps", "b.txt", "a.txt");
     });
 
-    test("a_to_a_malformed.bps", () => {
+    test("a_to_a_malformed.bps (not a BPS patch)", () => {
         const patch = readDataFile("a_to_a_malformed.bps");
 
         const base = readDataFile("a.txt");
@@ -101,7 +91,7 @@ describe("bps", () => {
         const patch = readDataFile("a_to_a.bps");
 
         const actualBase = readDataFile("a.txt");
-        const wrongBase = new Uint8Array([0xDE, 0xAD, 0xBE, 0xEF]);
+        const wrongBase = new Uint8Array([0xde, 0xad, 0xbe, 0xef]);
 
         const expected = new WrongInputSizeError(actualBase.length, wrongBase.length);
 
@@ -127,21 +117,21 @@ describe("bps", () => {
         assertPatch("ff4lunar_to_ff4chocobo.bps", "ff4lunar.spc", "ff4chocobo.spc");
     });
 
-    test("OLDC2017.bps", (t) => {
-        assertPatchROM(
-            t,
+    test(
+        "OLDC2017.bps",
+        testPatchesROM(
             "OLDC2017.bps",
             "Super Mario World (U) [!].sfc",
             "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1"
-        );
-    });
+        )
+    );
 
-    test("super2toad.bps", (t) => {
-        assertPatchROM(
-            t,
+    test(
+        "super2toad.bps",
+        testPatchesROM(
             "super2toad.bps",
             "Super Mario Bros. 2 (U) (PRG0) [!].nes",
             "8f4f37cbe81ebeaef341b7bbe4131dc8f5dbd0c653a0070c5ee9787b0593fd48"
-        );
-    });
+        )
+    );
 });
