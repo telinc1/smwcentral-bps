@@ -1,4 +1,5 @@
 import * as assert from "node:assert/strict";
+import * as crypto from "node:crypto";
 import {describe, test} from "node:test";
 
 import {
@@ -11,6 +12,7 @@ import {
 } from "../dist/index.js";
 
 import {readFile} from "./utils/file.js";
+import {hasROM, readROM} from "./utils/roms.js";
 
 function assertBytesEqual(actual, expected) {
     assert.strictEqual(actual.length, expected.length);
@@ -18,6 +20,10 @@ function assertBytesEqual(actual, expected) {
     for (let i = 0; i < actual.length; i++) {
         assert.strictEqual(actual[i], expected[i]);
     }
+}
+
+function assertHashEqual(actual, expectedHash) {
+    assert.strictEqual(crypto.hash("sha256", actual), expectedHash);
 }
 
 describe("bps", () => {
@@ -135,5 +141,35 @@ describe("bps", () => {
         const expected = readFile("./data/ff4chocobo.spc");
 
         assertBytesEqual(applyBPS(base, patch), expected);
+    });
+
+    test("OLDC2017.bps", (t) => {
+        const baseROM = "Super Mario World (U) [!].sfc";
+
+        if (!hasROM(baseROM)) {
+            t.skip(`base ROM "${baseROM}" not available`);
+            return;
+        }
+
+        const patch = readFile("./data/OLDC2017.bps");
+        const base = readROM(baseROM);
+        const expectedHash = "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1";
+
+        assertHashEqual(applyBPS(base, patch), expectedHash);
+    });
+
+    test("super2toad.bps", (t) => {
+        const baseROM = "Super Mario Bros. 2 (U) (PRG0) [!].nes";
+
+        if (!hasROM(baseROM)) {
+            t.skip(`base ROM "${baseROM}" not available`);
+            return;
+        }
+
+        const patch = readFile("./data/super2toad.bps");
+        const base = readROM(baseROM);
+        const expectedHash = "8f4f37cbe81ebeaef341b7bbe4131dc8f5dbd0c653a0070c5ee9787b0593fd48";
+
+        assertHashEqual(applyBPS(base, patch), expectedHash);
     });
 });
