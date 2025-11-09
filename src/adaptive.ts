@@ -11,12 +11,12 @@ import {
 
 export interface AdaptiveOptions {
     /**
-     * If true, try to adapt a SNES ROM with a 512-byte copier (SMC) header.
+     * If true (default), try to adapt a SNES ROM with a 512-byte copier (SMC) header.
      */
     trySMC: boolean;
 
     /**
-     * If true, try to adapt a Super Mario Bros. 2 ROM with different versions.
+     * If true (default), try to adapt a Super Mario Bros. 2 ROM with different versions.
      */
     trySMB2: boolean;
 }

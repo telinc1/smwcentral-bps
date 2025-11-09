@@ -6,7 +6,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsc && esbuild src/index.ts --bundle --platform=neutral --sourcemap --outdir=dist",
+        "build": "tsc && bash fix_d_ts.sh && esbuild src/index.ts --bundle --platform=neutral --sourcemap --outdir=dist",
         "check": "biome check --write",
         "workflow:check": "biome check",
         "test": "node --test"
