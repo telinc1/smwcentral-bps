@@ -24,7 +24,7 @@ export interface AdaptiveOptions {
 export function adaptiveApplyBPS(
     rom: Uint8Array,
     patch: Uint8Array,
-    {trySMB2 = true, trySMC = true}: Partial<AdaptiveOptions> = {}
+    {trySMB2 = true, trySMC = true}: Partial<AdaptiveOptions> = {},
 ): Uint8Array {
     let originalWrongInputError: WrongInputError;
 

@@ -2,12 +2,12 @@ import * as assert from "node:assert/strict";
 import {describe, test} from "node:test";
 
 import {
-    crc32,
     applyBPS,
+    crc32,
+    getExpectedChecksum,
     MalformedPatchError,
     WrongInputChecksumError,
     WrongInputSizeError,
-    getExpectedChecksum,
 } from "../dist/index.js";
 
 import {assertBytesEqual, assertHashEqual} from "./utils/bps.js";
@@ -122,8 +122,8 @@ describe("bps", () => {
         testPatchesROM(
             "OLDC2017.bps",
             "Super Mario World (U) [!].sfc",
-            "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1"
-        )
+            "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1",
+        ),
     );
 
     test(
@@ -131,7 +131,7 @@ describe("bps", () => {
         testPatchesROM(
             "super2toad.bps",
             "Super Mario Bros. 2 (U) (PRG0) [!].nes",
-            "8f4f37cbe81ebeaef341b7bbe4131dc8f5dbd0c653a0070c5ee9787b0593fd48"
-        )
+            "8f4f37cbe81ebeaef341b7bbe4131dc8f5dbd0c653a0070c5ee9787b0593fd48",
+        ),
     );
 });

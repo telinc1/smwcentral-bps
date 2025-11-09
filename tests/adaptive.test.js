@@ -68,8 +68,8 @@ describe("adaptive", () => {
                 "OLDC2017.bps",
                 "Super Mario World (U) [!].sfc",
                 makeOptions(false),
-                "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1"
-            )
+                "9a3b61c2f5c592197714fcd3099364318e510aacb6ec152c3035656e75c271b1",
+            ),
         );
 
         it(
@@ -78,13 +78,13 @@ describe("adaptive", () => {
                 "OLDC2017.bps",
                 "Super Mario World (U) [!].smc",
                 makeOptions(false, {trySMC: true}),
-                "bc75bda2fad625958807a64f1a7a941ea567197f346916ce4a85669d1da89908"
-            )
+                "bc75bda2fad625958807a64f1a7a941ea567197f346916ce4a85669d1da89908",
+            ),
         );
 
         it(
             "doesn't adapt headered SNES ROMs to headerless SNES ROMs if told not to",
-            testFailsToPatchROM("OLDC2017.bps", "Super Mario World (U) [!].smc", makeOptions(true, {trySMC: false}))
+            testFailsToPatchROM("OLDC2017.bps", "Super Mario World (U) [!].smc", makeOptions(true, {trySMC: false})),
         );
     });
 
@@ -100,19 +100,19 @@ describe("adaptive", () => {
 
         it(
             "adapts Rev 0 (NES 2)",
-            testPatchesROM(rev0Patch, smb2_revA, makeOptions(false, {trySMB2: true}), expectedHash)
+            testPatchesROM(rev0Patch, smb2_revA, makeOptions(false, {trySMB2: true}), expectedHash),
         );
 
         it("adapts Rev A", testPatchesROM(rev0Patch, smb2_revA, makeOptions(false, {trySMB2: true}), expectedHash));
 
         it(
             "doesn't adapt Rev 0 (NES 2) if told not to",
-            testFailsToPatchROM(rev0Patch, smb2_rev0_nes_2, makeOptions(true, {trySMB2: false}))
+            testFailsToPatchROM(rev0Patch, smb2_rev0_nes_2, makeOptions(true, {trySMB2: false})),
         );
 
         it(
             "doesn't adapt Rev A if told not to",
-            testFailsToPatchROM(rev0Patch, smb2_revA, makeOptions(true, {trySMB2: false}))
+            testFailsToPatchROM(rev0Patch, smb2_revA, makeOptions(true, {trySMB2: false})),
         );
     });
 
@@ -122,7 +122,7 @@ describe("adaptive", () => {
 
         it(
             "doesn't need to adapt Rev 0 (NES 2)",
-            testPatchesROM(rev0nes2Patch, smb2_rev0_nes_2, makeOptions(false), expectedHash)
+            testPatchesROM(rev0nes2Patch, smb2_rev0_nes_2, makeOptions(false), expectedHash),
         );
 
         it("adapts Rev 0", testPatchesROM(rev0nes2Patch, smb2_rev0, makeOptions(false, {trySMB2: true}), expectedHash));
@@ -131,12 +131,12 @@ describe("adaptive", () => {
 
         it(
             "doesn't adapt Rev 0 if told not to",
-            testFailsToPatchROM(rev0nes2Patch, smb2_rev0, makeOptions(true, {trySMB2: false}))
+            testFailsToPatchROM(rev0nes2Patch, smb2_rev0, makeOptions(true, {trySMB2: false})),
         );
 
         it(
             "doesn't adapt Rev A if told not to",
-            testFailsToPatchROM(rev0nes2Patch, smb2_revA, makeOptions(true, {trySMB2: false}))
+            testFailsToPatchROM(rev0nes2Patch, smb2_revA, makeOptions(true, {trySMB2: false})),
         );
     });
 
@@ -151,14 +151,14 @@ describe("adaptive", () => {
 
         it(
             "adapts Rev 0 (NES 2)",
-            testPatchesROM(revAPatch, smb2_rev0_nes_2, makeOptions(false, {trySMB2: true}), expectedHash)
+            testPatchesROM(revAPatch, smb2_rev0_nes_2, makeOptions(false, {trySMB2: true}), expectedHash),
         );
 
         it("doesn't adapt Rev 0", testFailsToPatchROM(revAPatch, smb2_rev0, makeOptions(true, {trySMB2: false})));
 
         it(
             "doesn't adapt Rev 0 (NES 2)",
-            testFailsToPatchROM(revAPatch, smb2_rev0_nes_2, makeOptions(true, {trySMB2: false}))
+            testFailsToPatchROM(revAPatch, smb2_rev0_nes_2, makeOptions(true, {trySMB2: false})),
         );
     });
 });

@@ -15,13 +15,19 @@ export abstract class WrongInputError extends PatchError {
 }
 
 export class WrongInputSizeError extends WrongInputError {
-    constructor(public readonly expectedSize: number, public readonly actualSize: number) {
+    constructor(
+        public readonly expectedSize: number,
+        public readonly actualSize: number,
+    ) {
         super();
     }
 }
 
 export class WrongInputChecksumError extends WrongInputError {
-    constructor(public readonly expectedChecksum: number, public readonly actualChecksum: number) {
+    constructor(
+        public readonly expectedChecksum: number,
+        public readonly actualChecksum: number,
+    ) {
         super();
     }
 }
