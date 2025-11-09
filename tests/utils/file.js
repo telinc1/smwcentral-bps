@@ -8,3 +8,7 @@ export function exists(name) {
 export function readFile(name) {
     return fs.readFileSync(path.resolve(import.meta.dirname, "..", name));
 }
+
+export function readDataFile(name) {
+    return readFile(path.join("data", name));
+}
