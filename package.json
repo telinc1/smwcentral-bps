@@ -8,15 +8,14 @@
     "scripts": {
         "build": "tsc && esbuild src/index.ts --bundle --platform=neutral --sourcemap --outdir=dist",
         "check": "biome check --write",
-        "test": "node --test",
-        "workflow:check": "biome check"
+        "workflow:check": "biome check",
+        "test": "node --test"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/telinc1/smwcentral-bps.git"
     },
     "files": [
-        "assets/**/*",
         "dist/**/*"
     ],
     "keywords": [
