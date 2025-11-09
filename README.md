@@ -113,5 +113,5 @@ Released under the [MIT License](https://github.com/telinc1/smwcentral-bps/blob/
 ## Credits
 
 Built and maintained by [Telinc1](https://github.com/telinc1). [Original JavaScript BPS
-patcher](https://media.smwcentral.net/Alcaro/bps/) by [Alcaro](https://smwc.me/u/32552). SMC support by
-[randomdude999](https://smwc.me/u/32552). Super Mario Bros. 2 support by [CircleFriendo](https://smwc.me/u/49634).
+patcher](https://media.smwcentral.net/Alcaro/bps/) by [Sir_Walrus](https://smwc.me/u/1686). SMC support by
+[trillian](https://smwc.me/u/32552). Super Mario Bros. 2 support by [CircleFriendo](https://smwc.me/u/49634).
