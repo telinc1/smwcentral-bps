@@ -1,9 +1,11 @@
 {
-    "extends": "@total-typescript/tsconfig/tsc/no-dom/library",
+    "extends": "@total-typescript/tsconfig/bundler/no-dom",
     "include": ["src/**/*"],
     "compilerOptions": {
         "rootDir": "src",
         "outDir": "dist",
-        "target": "esnext"
+        "noEmit": false,
+        "declaration": true,
+        "emitDeclarationOnly": true
     }
 }

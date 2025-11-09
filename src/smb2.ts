@@ -1,5 +1,5 @@
-export {default as PATCH_REV_0_TO_REV_A} from "./assets/Rev0ToRevA.bps.js";
-export {default as PATCH_REV_A_TO_REV_0} from "./assets/RevAToRev0.bps.js";
+export {default as PATCH_REV_0_TO_REV_A} from "./assets/Rev0ToRevA.bps" with {type: "bytes"};
+export {default as PATCH_REV_A_TO_REV_0} from "./assets/RevAToRev0.bps" with {type: "bytes"};
 
 export const TYPE_REV_0 = Symbol("Rev 0");
 export const TYPE_REV_A = Symbol("Rev A");
