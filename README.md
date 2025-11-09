@@ -106,6 +106,29 @@ The following adaptations are currently supported:
 -   `trySMB2`: If enabled, patches made for Super Mario Bros. 2 can be applied to any commonly used ROM (Rev 0, Rev 0 in
     NES 2.0 format, and Rev A), no matter the combination of patch and input ROM.
 
+## Tests
+
+Complete tests are available in the [`tests`](./tests) directory. Run with:
+
+```
+$ npm test
+```
+
+Some tests require commercial ROM files to be available in order to run. These tests will be skipped by default. In
+order to run the full test suite, you need to supply the following the ROM files, which are presumably personal backups
+of the copies of the respective games that you already own:
+
+```
+47ba60fad332fdea5ae44b7979fe1ee78de1d316ee027fea2ad5fe3c0d86f25a  Super Mario Bros. 2 (U) (PRG0) [!].nes
+41300bc4942a8a4f9b53148b404dd5cae3dd708ebdd9b617888d290a51a83e43  Super Mario Bros. 2 (USA).nes
+6ca47e9da206914730895e45fef4f7393e59772c1c80e9b9befc1a01d7ecf724  Super Mario Bros. 2 (USA) (Rev A).nes
+0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b  Super Mario World (U) [!].sfc
+d70c9c7716ad12c674fc7dd744736aa48d4d7b4237f58066be620fda26024872  Super Mario World (U) [!].smc
+```
+
+Place any ROMs you have in the [`tests/roms`](./tests/roms) directory with exactly the filenames listed above. The test
+suite will automatically detect the ROMs, validate their checksum, and enable any tests that use them.
+
 ## License
 
 Released under the [MIT License](https://github.com/telinc1/smwcentral-bps/blob/main/LICENSE).
