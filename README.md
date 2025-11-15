@@ -32,7 +32,7 @@ You can import the module directly from a CDN:
 
 ```html
 <script type="module">
-    import * as bps from "https://cdn.jsdelivr.net/npm/@smwcentral/bps@1.0.0/dist/index.js";
+    import * as bps from "https://cdn.jsdelivr.net/npm/@smwcentral/bps@1.0.1/dist/index.js";
 </script>
 ```
 
@@ -42,7 +42,7 @@ For convenience, use an import map:
 <script type="importmap">
     {
         "imports": {
-            "@smwcentral/bps": "https://cdn.jsdelivr.net/npm/@smwcentral/bps@1.0.0/dist/index.js"
+            "@smwcentral/bps": "https://cdn.jsdelivr.net/npm/@smwcentral/bps@1.0.1/dist/index.js"
         }
     }
 </script>

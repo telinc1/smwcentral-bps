@@ -1,7 +1,7 @@
 {
     "name": "@smwcentral/bps",
     "type": "module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Library for patching BPS files, focusing on games supported by SMW Central",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
