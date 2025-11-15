@@ -91,7 +91,7 @@ export function adaptiveApplyBPS(
     }
 
     // Maybe a headered SNES ROM? Try to skip the first 512 bytes for patching
-    if (trySMC) {
+    if (trySMC && rom.buffer.byteLength > 512) {
         try {
             const result = applyBPS(new Uint8Array(rom.buffer, 512), patch);
 
